@@ -2,5 +2,11 @@
   "Dashboard": "Bảng điều khiển",
   "Staff Management": "Quản lý nhân viên",
   "Staffs": "Nhân viên",
-  "Departments": "Phòng ban"
+  "Departments": "Phòng ban",
+  "No.": "STT",
+  "Department Name": "Tên phòng ban",
+  "Action": "Chức năng",
+  "Add department": "Thêm phòng ban",
+  "Add staff": "Thêm nhân viên",
+  "Name": "Tên"
 }

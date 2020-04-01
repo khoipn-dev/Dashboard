@@ -5,7 +5,7 @@ import { findIndexInArrayByKey } from "./../../helper";
 
 import "./style.css";
 import DepartmentModal from "./DepartmentModal";
-
+import {useTranslation} from "react-i18next";
 const {Column, Cell, HeaderCell} = Table;
 export default function Departments() {
     const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +13,8 @@ export default function Departments() {
     const [showModalAdd, setShowModalAdd] = useState(false);
     const [showModalUpdate, setShowModalUpdate] = useState(false);
     const [initData, setInitData] = useState({});
+
+    const { t } = useTranslation();
 
     useEffect(function () {
         async function fetchData() {
@@ -113,11 +115,11 @@ export default function Departments() {
 
     return (
         <div>
-            <Panel header={<h4>Departments</h4>}>
+            <Panel header={<h4>{t("Departments")}</h4>}>
                 <div className="table-toolbar">
                     <ButtonToolbar>
                         <Button appearance="primary" placement="left" onClick={handleShowModalAdd}>
-                            Add new department
+                            {t("Add new department")}
                         </Button>
                     </ButtonToolbar>
                 </div>
@@ -127,7 +129,7 @@ export default function Departments() {
                     data={tableData}
                 >
                     <Column width={100}>
-                        <HeaderCell align="center">No.</HeaderCell>
+                        <HeaderCell align="center">{t("No.")}</HeaderCell>
                         <Cell align="center">
                             {(rowData, rowIndex) => {
                                 return (
@@ -137,11 +139,11 @@ export default function Departments() {
                         </Cell>
                     </Column>
                     <Column width={600} fixed>
-                        <HeaderCell align="center">Department Name</HeaderCell>
+                        <HeaderCell align="center">{t("Department Name")}</HeaderCell>
                         <Cell align="center" dataKey="name"/>
                     </Column>
                     <Column width={100} fixed="right">
-                        <HeaderCell align="center">Action</HeaderCell>
+                        <HeaderCell align="center">{t("Action")}</HeaderCell>
                         <Cell align="center">
                             {(rowData, rowIndex) => {
                                 return (

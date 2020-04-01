@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Sidebar, Sidenav, Dropdown, Icon, Nav, DOMHelper } from "rsuite";
+import React, {useState} from "react";
+import {useTranslation} from "react-i18next";
+import {Sidebar, Sidenav, Dropdown, Icon, Nav, DOMHelper} from "rsuite";
 import {NavLink, Link} from "react-router-dom";
 import NavToggle from "./NavToggle";
 
@@ -60,13 +61,17 @@ const navs = [
     }
 ];
 
-const { on, getHeight } = DOMHelper;
+const {on, getHeight} = DOMHelper;
 
 function renderNavs() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {t} = useTranslation();
+
     return navs.map(item => {
         if (item.children) {
             return (
-                <Dropdown key={item.key} title={item.text} eventKey={item.key} icon={item.icon} placement="rightStart" trigger="hover">
+                <Dropdown key={item.key} title={t(item.text)} eventKey={item.key} icon={item.icon} placement="rightStart"
+                          trigger="hover">
                     {item.children.map(child => {
                         return (
                             <Dropdown.Item
@@ -75,7 +80,7 @@ function renderNavs() {
                                 to={child.link}
                                 key={child.key}
                                 eventKey={child.key}>
-                                {child.text}
+                                {t(child.text)}
                             </Dropdown.Item>
                         );
                     })}
@@ -90,7 +95,7 @@ function renderNavs() {
                 key={item.key}
                 eventKey={item.key}
                 icon={item.icon}>
-                {item.text}
+                {t(item.text)}
             </Nav.Item>
         );
 
@@ -101,7 +106,7 @@ export default function SideNav({expand, handleToggle}) {
     const [windowHeight, setWindowHeight] = useState(getHeight(window));
 
     on(window, 'resize', updateWindowHeight);
-    
+
     function updateWindowHeight() {
         setWindowHeight(getHeight(window));
     }
@@ -118,26 +123,26 @@ export default function SideNav({expand, handleToggle}) {
     return (
         <Sidebar
             className="sidenav"
-            style={{ display: 'flex', flexDirection: 'column' }}
+            style={{display: 'flex', flexDirection: 'column'}}
             width={expand ? 260 : 56}
             collapsible
         >
             <Sidenav.Header>
                 <div className="header-brand">
                     <Link to="/">
-                        <Icon icon="logo-analytics" size="lg" style={{ verticalAlign: 0 }} />
-                        <span style={{ marginLeft: 12 }}> R-SUITE ANALYTICS</span>
+                        <Icon icon="logo-analytics" size="lg" style={{verticalAlign: 0}}/>
+                        <span style={{marginLeft: 12}}> R-SUITE ANALYTICS</span>
                     </Link>
                 </div>
             </Sidenav.Header>
-            <Sidenav expanded={expand}  appearance="subtle">
+            <Sidenav expanded={expand} appearance="subtle">
                 <Sidenav.Body style={navBodyStyle}>
                     <Nav>
-                        { renderNavs() }
+                        {renderNavs()}
                     </Nav>
                 </Sidenav.Body>
             </Sidenav>
-            <NavToggle expand={expand} onChange={handleToggle} />
+            <NavToggle expand={expand} onChange={handleToggle}/>
         </Sidebar>
     );
 }

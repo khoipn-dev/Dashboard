@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Panel, Table, Button, ButtonToolbar, InputGroup, Input, Icon, IconButton} from "rsuite";
 import { DOMHelper } from "rsuite";
+import {useTranslation} from "react-i18next";
 import { StaffService } from "../../services/StaffService";
 
 import "./style.css";
@@ -10,10 +11,11 @@ const { Column, HeaderCell, Cell } = Table;
 const { getHeight } = DOMHelper;
 
 export default function Staffs() {
-
     const [tableData, setTableData] = useState([]);
     const [showDrawer, setShowDrawer] = useState(false);
     const [isLoadingData, setIsLoadingData] = useState(true);
+
+    const { t } = useTranslation();
 
     useEffect( function () {
         async function fetchAPI() {
@@ -44,13 +46,13 @@ export default function Staffs() {
 
     return (
         <div>
-            <Panel header={<h4>Staffs</h4>}>
+            <Panel header={<h4>{t("Staffs")}</h4>}>
                 <div className="table-toolbar">
                     <div className="row">
                         <div className="col-3">
                             <ButtonToolbar>
                                 <Button appearance="primary" placement="left" onClick={handleShowDrawer}>
-                                    Add new staff
+                                    {t("Add staff")}
                                 </Button>
                             </ButtonToolbar>
                         </div>
@@ -71,7 +73,7 @@ export default function Staffs() {
                     onRowClick={(rowData) => { console.log(rowData) }}
                 >
                     <Column width={100}>
-                        <HeaderCell align="center">No.</HeaderCell>
+                        <HeaderCell align="center">{t("No.")}</HeaderCell>
                         <Cell align="center">
                             {(rowData, rowIndex) => {
                                 return (
@@ -89,7 +91,7 @@ export default function Staffs() {
                         <Cell dataKey="email" />
                     </Column>
                     <Column width={200}>
-                        <HeaderCell>Name</HeaderCell>
+                        <HeaderCell>{t("Name")}</HeaderCell>
                         <Cell dataKey="name" />
                     </Column>
                     <Column width={200}>
