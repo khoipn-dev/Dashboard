@@ -34,7 +34,7 @@ export default function Departments() {
             handleCloseModalAdd();
             Notification.success({
                 title: t("Success"),
-                description: t("Add new department success"),
+                description: t("Add success"),
                 duration: 3000
             })
         } catch (e) {
@@ -65,7 +65,7 @@ export default function Departments() {
             handleCloseModalUpdate();
             Notification.success({
                 title: t("Success"),
-                description: t("Update department success"),
+                description: t("Update success"),
                 duration: 3000
             })
         } catch (e) {

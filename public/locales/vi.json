@@ -3,8 +3,9 @@
   "Staff Management": "Quản lý nhân viên",
   "Staffs": "Nhân viên",
   "Departments": "Phòng ban",
-  "Update department success": "Cập nhât phòng ban thành công",
-  "Add new department success": "Thêm phòng ban thành công",
+  "Update success": "Cập nhât thành công",
+  "Add success": "Thêm thành công",
+  "Delete success": "Xoá thành công",
   "Error": "Có lỗi",
   "Have error. Please try again": "Có lỗi. Vui lòng thử lại",
   "Success": "Thành công",
@@ -12,6 +13,7 @@
   "Department Name": "Tên phòng ban",
   "Action": "Chức năng",
   "Add department": "Thêm phòng ban",
+  "Update department": "Cập nhật phòng ban",
   "Add staff": "Thêm nhân viên",
   "Name": "Tên",
   "Search": "Tìm kiếm",
@@ -19,5 +21,9 @@
   "Signed in as": "Đã đăng nhập với",
   "Profile": "Trang cá nhân",
   "Settings": "Cài đặt",
-  "Sign out": "Đăng xuất"
+  "Sign out": "Đăng xuất",
+  "Language": "Ngôn ngữ",
+  "Add": "Thêm",
+  "Save change": "Lưu thay đổi",
+  "Cancel": "Huỷ"
 }
