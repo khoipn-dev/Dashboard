@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import {Panel, Table, Button, ButtonToolbar, InputGroup, Input, Icon, IconButton} from "rsuite";
-import { DOMHelper } from "rsuite";
+import {DOMHelper} from "rsuite";
 import {useTranslation} from "react-i18next";
-import { StaffService } from "../../services/StaffService";
+import {StaffService} from "../../services/StaffService";
 
 import "./style.css";
 import DrawerView from "./DrawerView";
 
-const { Column, HeaderCell, Cell } = Table;
-const { getHeight } = DOMHelper;
+const {Column, HeaderCell, Cell} = Table;
+const {getHeight} = DOMHelper;
 
 export default function Staffs() {
     const [tableData, setTableData] = useState([]);
     const [showDrawer, setShowDrawer] = useState(false);
     const [isLoadingData, setIsLoadingData] = useState(true);
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
-    useEffect( function () {
+    useEffect(function () {
         async function fetchAPI() {
             let data = await StaffService.getAll();
             setTableData(data);
             setIsLoadingData(false);
         }
+
         fetchAPI();
     }, []);
 
@@ -57,10 +58,10 @@ export default function Staffs() {
                             </ButtonToolbar>
                         </div>
                         <div className="col-9">
-                            <InputGroup className="pull-right" style={{width:300}} inside>
-                                <Input placeholder="Search" />
+                            <InputGroup className="pull-right" style={{width: 300}} inside>
+                                <Input placeholder={t("Search")}/>
                                 <InputGroup.Addon>
-                                    <Icon icon="search" />
+                                    <Icon icon="search"/>
                                 </InputGroup.Addon>
                             </InputGroup>
                         </div>
@@ -70,7 +71,9 @@ export default function Staffs() {
                     loading={isLoadingData}
                     data={tableData}
                     height={getHeight(window) - 216}
-                    onRowClick={(rowData) => { console.log(rowData) }}
+                    onRowClick={(rowData) => {
+                        console.log(rowData)
+                    }}
                 >
                     <Column width={100}>
                         <HeaderCell align="center">{t("No.")}</HeaderCell>
@@ -84,26 +87,26 @@ export default function Staffs() {
                     </Column>
                     <Column width={200}>
                         <HeaderCell>Id</HeaderCell>
-                        <Cell dataKey="id" />
+                        <Cell dataKey="id"/>
                     </Column>
                     <Column width={200}>
                         <HeaderCell>Email</HeaderCell>
-                        <Cell dataKey="email" />
+                        <Cell dataKey="email"/>
                     </Column>
                     <Column width={200}>
                         <HeaderCell>{t("Name")}</HeaderCell>
-                        <Cell dataKey="name" />
+                        <Cell dataKey="name"/>
                     </Column>
                     <Column width={200}>
-                        <HeaderCell>City</HeaderCell>
-                        <Cell dataKey="city" />
+                        <HeaderCell>{t("City")}</HeaderCell>
+                        <Cell dataKey="city"/>
                     </Column>
                     <Column width={300}>
-                        <HeaderCell>Company Name</HeaderCell>
-                        <Cell dataKey="companyName" />
+                        <HeaderCell>{t("Company Name")}</HeaderCell>
+                        <Cell dataKey="companyName"/>
                     </Column>
                     <Column width={100} fixed="right">
-                        <HeaderCell align="center">Action</HeaderCell>
+                        <HeaderCell align="center">{t("Action")}</HeaderCell>
                         <Cell align="center">
                             {rowData => {
                                 return (

@@ -1,8 +1,9 @@
 import React, {Suspense, useState} from "react";
-import SideNav from "../../SideNav";
+import SideNav from "./SideNav";
 import { Container, Content } from "rsuite";
 import { Switch, Route } from "react-router-dom";
 import routes from "../../../routes";
+import AvatarHeader from "./AvatarHeader";
 
 function Loading() {
     return (
@@ -22,6 +23,7 @@ export default function DefaultLayout() {
             <SideNav expand={expand} handleToggle={handleToggle} />
             <Container className={(expand)? "page-container" : "page-container container-full"}>
                 <Content>
+                    <AvatarHeader/>
                     <Suspense fallback={<Loading/>}>
                         <Switch>
                             {routes.map((route, index) => {

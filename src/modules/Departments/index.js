@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
 import {Button, ButtonToolbar, Icon, IconButton, Panel, Table, Notification} from "rsuite";
 import {DepartmentService} from "./../../services/DepartmentService";
-import { findIndexInArrayByKey } from "./../../helper";
+import {findIndexInArrayByKey} from "./../../helper";
 
 import "./style.css";
 import DepartmentModal from "./DepartmentModal";
 import {useTranslation} from "react-i18next";
+
 const {Column, Cell, HeaderCell} = Table;
 export default function Departments() {
     const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,7 @@ export default function Departments() {
     const [showModalUpdate, setShowModalUpdate] = useState(false);
     const [initData, setInitData] = useState({});
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     useEffect(function () {
         async function fetchData() {
@@ -32,14 +33,14 @@ export default function Departments() {
             setTableData([...tableData, result]);
             handleCloseModalAdd();
             Notification.success({
-                title: "Success",
-                description: "Add new department success",
+                title: t("Success"),
+                description: t("Add new department success"),
                 duration: 3000
             })
         } catch (e) {
             Notification.error({
-                title: "Error",
-                description: "Have error. Please try again",
+                title: t("Error"),
+                description: t("Have error. Please try again"),
                 duration: 3000
             })
         }
@@ -63,14 +64,14 @@ export default function Departments() {
 
             handleCloseModalUpdate();
             Notification.success({
-                title: "Success",
-                description: "Update department success",
+                title: t("Success"),
+                description: t("Update department success"),
                 duration: 3000
             })
         } catch (e) {
             Notification.error({
-                title: "Error",
-                description: "Have error. Please try again",
+                title: t("Error"),
+                description: t("Have error. Please try again"),
                 duration: 3000
             })
         }
@@ -84,14 +85,14 @@ export default function Departments() {
             temp.splice(index, 1);
             setTableData([...temp]);
             Notification.success({
-                title: "Success",
-                description: "Delete success",
+                title: t("Success"),
+                description: t("Delete success"),
                 duration: 3000
             })
         } catch (e) {
             Notification.error({
-                title: "Error",
-                description: "Have error. Please try again",
+                title: t("Error"),
+                description: t("Have error. Please try again"),
                 duration: 3000
             })
         }
@@ -119,7 +120,7 @@ export default function Departments() {
                 <div className="table-toolbar">
                     <ButtonToolbar>
                         <Button appearance="primary" placement="left" onClick={handleShowModalAdd}>
-                            {t("Add new department")}
+                            {t("Add department")}
                         </Button>
                     </ButtonToolbar>
                 </div>
@@ -129,7 +130,7 @@ export default function Departments() {
                     data={tableData}
                 >
                     <Column width={100}>
-                        <HeaderCell align="center">{t("No.")}</HeaderCell>
+                        <HeaderCell align="center">{t("No")}</HeaderCell>
                         <Cell align="center">
                             {(rowData, rowIndex) => {
                                 return (
@@ -148,9 +149,11 @@ export default function Departments() {
                             {(rowData, rowIndex) => {
                                 return (
                                     <React.Fragment>
-                                        <IconButton onClick={() => onClickUpdateDepartment(rowData)} size="xs" color="green" icon={<Icon icon="pencil"/>}/>
+                                        <IconButton onClick={() => onClickUpdateDepartment(rowData)} size="xs"
+                                                    color="green" icon={<Icon icon="pencil"/>}/>
                                         &nbsp;
-                                        <IconButton onClick={() => deleteDepartment(rowData)} size="xs" color="red" icon={<Icon icon="trash"/>}/>
+                                        <IconButton onClick={() => deleteDepartment(rowData)} size="xs" color="red"
+                                                    icon={<Icon icon="trash"/>}/>
                                     </React.Fragment>
                                 );
                             }}

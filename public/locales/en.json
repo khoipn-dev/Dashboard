@@ -2,5 +2,16 @@
   "Dashboard": "Dashboard",
   "Staff Management": "Staff Management",
   "Staffs": "Staffs",
-  "Departments": "Departments"
+  "Departments": "Departments",
+  "Update department success": "Update department success",
+  "Add new department success": "Add new department success",
+  "Error": "Error",
+  "Have error. Please try again": "Have error. Please try again",
+  "Success": "Success",
+  "Search": "Search",
+  "No": "No",
+  "Signed in as": "Signed in as",
+  "Profile": "Profile",
+  "Settings": "Settings",
+  "Sign out": "Sign out"
 }
